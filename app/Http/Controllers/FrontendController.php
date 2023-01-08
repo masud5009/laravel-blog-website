@@ -25,7 +25,7 @@ class FrontendController extends Controller
         //all recent post
         $recentPosts = Post::orderBy('created_at','DESC')->paginate(9);
 
-        $user = auth::User();
+        $user = auth()->User();
         $data = compact('user','posts','recentPosts','firstPost','secondPost','lastPost','firstFooter','secondFooter','lastFooter');
         return view('website.index')->with($data);
     }
