@@ -11,8 +11,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <script src="{{asset('build/assets/app-2e929049.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('build/assets/app-67dcdfd2.css')}}">
 </head>
 <body>
     <div id="app">
