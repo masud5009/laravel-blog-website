@@ -8,7 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettngController;
-
+use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
