@@ -32,23 +32,7 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
     Route::get('/setting', [SettngController::class, 'edit'])->name('website.setting');
     Route::post('/setting', [SettngController::class, 'update'])->name('website.setting.update');
 });
-// Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
-//     //admin dashboard showing route
-//     Route::get('/dashboard',function(){
-//         return view('layouts.admin');
-//     })->name('admin.dashboard');
-//     //admin manegment all route
-//     Route::resource('category',CategoryController::class);
-//     Route::resource('tag',TagController::class);
-//     Route::resource('post',PostController::class);
-//     Route::resource('user',UserController::class);
-//     //profile info route
-//     Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
-//     Route::post('/profile',[UserController::class,'profile_update'])->name('user.profile.update');
-//     //website setting route
-//     Route::get('/setting',[SettngController::class,'edit'])->name('website.setting');
-//     Route::post('/setting',[SettngController::class,'update'])->name('website.setting.update');
-// });
+
 
 //forntend route
 Route::get('/', [FrontendController::class, 'index'])->name('website');
