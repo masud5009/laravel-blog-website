@@ -33,7 +33,7 @@
       <div class="site-mobile-menu-body"></div>
     </div>
     <!--start:Header-->
-    <header class="site-navbar" role="banner">
+    <header class="site-navbar position-fixed" role="banner">
       <div class="container-fluid">
         <div class="row align-items-center">
 
@@ -53,7 +53,7 @@
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                 <li><a href="{{route('website')}}">Home</a></li>
                 @foreach ($categories as $category)
-                <li><a href="{{route('website.category',['slug'=>$category->slug])}}">{{$category->name}}</a></li>
+                <li><a class="anime" href="{{route('website.category',['slug'=>$category->slug])}}">{{$category->name}}</a></li>
                 @endforeach
                 <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
               </ul>

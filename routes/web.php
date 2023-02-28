@@ -15,6 +15,9 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //admin route
+Route::get('/admin',function(){
+    return view('/login');
+});
 Route::prefix('admin')->middleware('isAdmin')->group(function () {
     //admin dashboard showing route
     Route::get('/dashboard', function () {
