@@ -12,29 +12,46 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class,'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //admin route
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
+Route::prefix('admin')->middleware('isAdmin')->group(function () {
     //admin dashboard showing route
-    Route::get('/dashboard',function(){
+    Route::get('/dashboard', function () {
         return view('layouts.admin');
     })->name('admin.dashboard');
     //admin manegment all route
-    Route::resource('category',CategoryController::class);
-    Route::resource('tag',TagController::class);
-    Route::resource('post',PostController::class);
-    Route::resource('user',UserController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('tag', TagController::class);
+    Route::resource('post', PostController::class);
+    Route::resource('user', UserController::class);
     //profile info route
-    Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
-    Route::post('/profile',[UserController::class,'profile_update'])->name('user.profile.update');
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/profile', [UserController::class, 'profile_update'])->name('user.profile.update');
     //website setting route
-    Route::get('/setting',[SettngController::class,'edit'])->name('website.setting');
-    Route::post('/setting',[SettngController::class,'update'])->name('website.setting.update');
+    Route::get('/setting', [SettngController::class, 'edit'])->name('website.setting');
+    Route::post('/setting', [SettngController::class, 'update'])->name('website.setting.update');
 });
+// Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
+//     //admin dashboard showing route
+//     Route::get('/dashboard',function(){
+//         return view('layouts.admin');
+//     })->name('admin.dashboard');
+//     //admin manegment all route
+//     Route::resource('category',CategoryController::class);
+//     Route::resource('tag',TagController::class);
+//     Route::resource('post',PostController::class);
+//     Route::resource('user',UserController::class);
+//     //profile info route
+//     Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
+//     Route::post('/profile',[UserController::class,'profile_update'])->name('user.profile.update');
+//     //website setting route
+//     Route::get('/setting',[SettngController::class,'edit'])->name('website.setting');
+//     Route::post('/setting',[SettngController::class,'update'])->name('website.setting.update');
+// });
 
 //forntend route
-Route::get('/',[FrontendController::class,'index'])->name('website');
-Route::get('/category/{slug}',[FrontendController::class,'category'])->name('website.category');
-Route::get('/post/{slug}',[FrontendController::class,'post'])->name('website.post');
-Route::get('/contact',[FrontendController::class,'about'])->name('about.us');
+Route::get('/', [FrontendController::class, 'index'])->name('website');
+Route::get('/category/{slug}', [FrontendController::class, 'category'])->name('website.category');
+Route::get('/post/{slug}', [FrontendController::class, 'post'])->name('website.post');
+Route::get('/contact', [FrontendController::class, 'about'])->name('about.us');

@@ -109,6 +109,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        
         if($user){
             $user->delete();
             Session::flash('success','User deleted successfully');
